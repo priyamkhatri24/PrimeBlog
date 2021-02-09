@@ -4,11 +4,11 @@ import * as back from "../../css/blogpost.jpg";
 class FullPost {
   #parentEl = document.querySelector(".full_post_section");
 
-  renderMarkup(posts, users, postId) {
+  renderMarkup(posts, users, comments, postId) {
     this.#parentEl.innerHTML = "";
     this.#parentEl.insertAdjacentHTML(
       "afterbegin",
-      this.#generateMarkup.call(this, posts, users, postId)
+      this.#generateMarkup.call(this, posts, users, postId, comments)
     );
     this.#changeView();
   }
@@ -19,7 +19,7 @@ class FullPost {
     document.getElementById("fullPost").classList.remove("hidden");
   }
 
-  #generateMarkup(posts, users, postId) {
+  #generateMarkup(posts, users, postId, comments) {
     const currentPost = posts.find((ele) => ele.id === +postId);
     const currUser = users.find((ele) => ele.id === currentPost.userId);
     // console.log(currUser);
@@ -54,14 +54,26 @@ class FullPost {
 <section class="comment-sec">
      <div class="comment-section">
         <h2 class="comment-heading">5 Comments</h2>
-        <div class="comment">
-            <h4>Name</h4>
-            <p class="mail">name@gmail.com</p>
-            <p class="comment-text">adipisci iusto totam placeat corrupti ipsumLorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptas deserunt beatae adipisci iusto totam placeat corruptiadipisci iusto totam placeat corrupti ipsumLorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptas deserunt beatae adipisci iusto totam placeat corrupti</p>
-        </div>
+        ${this.#generateComments(comments, currentPost)}
     </div> 
 </section>
       `;
+  }
+
+  #generateComments(comments, currentPost) {
+    const commentsArr = comments.filter((ele) => ele.postId === currentPost.id);
+    console.log(commentsArr);
+    return commentsArr
+      .map((ele) => {
+        return `
+        <div class="comment">
+          <h4>${ele.name.split(" ").slice(0, 2).join(" ")}</h4>
+          <p class="mail">${ele.email}</p>
+          <p class="comment-text">${ele.body}</p>
+        </div>
+        `;
+      })
+      .join("");
   }
 }
 

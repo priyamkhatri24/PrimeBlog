@@ -36,3 +36,7 @@ export const loadUsersData = async function () {
     throw new Error(err);
   }
 };
+
+const paginationData = function () {
+  const postsPerPage = 16;
+};

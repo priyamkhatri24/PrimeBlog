@@ -8,8 +8,9 @@ import FullPost from "./View/fullPostView.js";
 const controlPosts = async function () {
   try {
     LatestPosts.renderSpinner();
-    const posts = await model.loadPostsData();
-    const users = await model.loadUsersData();
+    await model.loadPostsData();
+    await model.loadUsersData();
+    await model.loadCommentsData();
     LatestPosts.renderMarkup(model.state.posts, model.state.users);
   } catch (err) {
     LatestPosts.renderError();
@@ -26,7 +27,12 @@ const controlAllPosts = async function (postId) {
 
 const controlFullPost = async function (postId) {
   try {
-    FullPost.renderMarkup(model.state.posts, model.state.users, postId);
+    FullPost.renderMarkup(
+      model.state.posts,
+      model.state.users,
+      model.state.comments,
+      postId
+    );
   } catch (err) {
     console.log(err);
   }

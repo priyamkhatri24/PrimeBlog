@@ -231,7 +231,20 @@ main .site-title .explorebtn:hover {
   transform: scale(1.05);
   transition: 0.3s;
 }
-
+.pagination {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  margin: 20px auto -25px auto;
+}
+.pagination button {
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  border: transparent;
+  margin: auto 20px;
+}
 /********************************Footer Section *************************************/
 
 footer.footer {
