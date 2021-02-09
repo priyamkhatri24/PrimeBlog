@@ -5,6 +5,7 @@ class LatestPosts {
   #parentEl = document.querySelector(".latest__post__section");
   #postContainer = document.querySelector(".list-post-latest");
   #popularPostContainer = document.querySelector(".popular_posts_list");
+  #allLatestPostsBtn = document.querySelector(".see-all-latest-posts");
 
   renderMarkup(posts, users) {
     this.#postContainer.innerHTML = "";
@@ -21,21 +22,31 @@ class LatestPosts {
 
   renderSpinner() {
     const spinner = '<div class="loader">Loading...</div>';
-    this.#postContainer.innerHTML = "";
-    this.#popularPostContainer.innerHTML = "";
+    this.#clear();
     this.#postContainer.insertAdjacentHTML("afterbegin", spinner);
     this.#popularPostContainer.insertAdjacentHTML("afterbegin", spinner);
   }
 
+  renderError() {
+    this.#allLatestPostsBtn.classList.add("hidden");
+    const error = ` <div class="error_msg"><p>Something went wrong. Please try again later ❗ </p></div>`;
+    this.#clear();
+    this.#postContainer.insertAdjacentHTML("afterbegin", error);
+  }
+  #clear() {
+    this.#postContainer.innerHTML = "";
+    this.#popularPostContainer.innerHTML = "";
+  }
+
   #generateMarkupPopular(posts) {
-    const popularPosts = posts.filter((ele, index) => {
-      if ((index - 1) % 10 === 0) return ele;
+    const latestPosts = posts.filter((ele, index) => {
+      if (index % 10 === 0) return ele;
     });
-    return popularPosts
-      .slice(0, 3)
-      .map((ele, i) => {
+    return latestPosts
+      .slice(1, 4)
+      .map((ele) => {
         return `
-        <a href="#fullPost">
+        <a class="to_display" href="#fullPost" data-postid=${ele.id}>
           <div class="list-post-popular">
           <h3>${ele.title}</h3>
           <p>L${ele.body}...</p>
@@ -54,7 +65,7 @@ class LatestPosts {
       .slice(0, 6)
       .map((ele, i) => {
         return `
-        <a href="#fullPost">
+        <a class="to_display" href="#fullPost" data-postid=${ele.id}>
             <div class="list-post">
             <img src=${back.default}>
             <h3>${ele.title
@@ -69,6 +80,27 @@ class LatestPosts {
           `;
       })
       .join("");
+  }
+
+  allPostsClickHandler(handler) {
+    this.#allLatestPostsBtn.addEventListener("click", function (e) {
+      const btn = e.target.closest("a");
+
+      if (!btn) return;
+
+      handler();
+      document.querySelector(".nav").scrollIntoView({ behavior: "auto" });
+    });
+  }
+
+  displayFullPost(handler) {
+    this.#parentEl.addEventListener("click", function (e) {
+      const postCard = e.target.closest(".to_display");
+
+      if (!postCard) return;
+      handler(postCard.dataset.postid);
+      document.querySelector(".nav").scrollIntoView({ behavior: "auto" });
+    });
   }
 }
 

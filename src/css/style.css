@@ -185,9 +185,10 @@ main .site-title .explorebtn:hover {
   background-color: #f7f3ef;
 }
 
-.see-all-latest-posts a h3 {
-  font-size: 15px;
-  font-weight: 300;
+.see-all-latest-posts a {
+  font-size: 17px;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-weight: 400;
   margin-left: 53px;
   margin-bottom: 20px;
   background-color: black;
@@ -197,7 +198,7 @@ main .site-title .explorebtn:hover {
   color: white;
   border: solid 2px black;
 }
-.see-all-latest-posts a h3:hover {
+.see-all-latest-posts a:hover {
   background: transparent;
   border: solid 2px black;
   color: black;
@@ -331,6 +332,10 @@ footer.footer .rights {
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
+}
+.error_msg {
+  text-align: center;
+  margin: 0px auto;
 }
 @-webkit-keyframes load5 {
   0%,
