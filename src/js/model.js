@@ -7,6 +7,9 @@ export const state = {
   posts: [],
   users: [],
   comments: [],
+  postsPerPage: 16,
+  currPage: 1,
+  perPagePosts: [],
 };
 
 export const loadPostsData = async function () {
@@ -37,6 +40,8 @@ export const loadUsersData = async function () {
   }
 };
 
-const paginationData = function () {
-  const postsPerPage = 16;
+export const createPagination = function (page = state.currPage) {
+  const start = (page - 1) * state.postsPerPage;
+  const end = page * state.postsPerPage;
+  state.perPagePosts = state.posts.slice(start, end);
 };

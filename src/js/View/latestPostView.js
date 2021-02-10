@@ -98,6 +98,7 @@ class LatestPosts {
       const postCard = e.target.closest(".to_display");
 
       if (!postCard) return;
+      console.log(postCard);
       handler(postCard.dataset.postid);
       document.querySelector(".nav").scrollIntoView({ behavior: "auto" });
     });

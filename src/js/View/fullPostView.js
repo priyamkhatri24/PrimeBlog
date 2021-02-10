@@ -3,6 +3,7 @@ import * as back from "../../css/blogpost.jpg";
 
 class FullPost {
   #parentEl = document.querySelector(".full_post_section");
+  #alertMsg = "Something went wrong, please reload the page! ";
 
   renderMarkup(posts, users, comments, postId) {
     this.#parentEl.innerHTML = "";
@@ -62,18 +63,27 @@ class FullPost {
 
   #generateComments(comments, currentPost) {
     const commentsArr = comments.filter((ele) => ele.postId === currentPost.id);
-    console.log(commentsArr);
     return commentsArr
       .map((ele) => {
         return `
         <div class="comment">
-          <h4>${ele.name.split(" ").slice(0, 2).join(" ")}</h4>
-          <p class="mail">${ele.email}</p>
+          <div class="comment_display">
+            <ion-icon class="comment_user_icon" name="person-circle-outline"></ion-icon>
+            <div>
+              <h4>${ele.name.split(" ").slice(0, 2).join(" ")}</h4>
+              <p class="mail">${ele.email}</p>
+            </div>
+          </div>
           <p class="comment-text">${ele.body}</p>
+          <hr>
         </div>
         `;
       })
       .join("");
+  }
+
+  displayAlert() {
+    alert(this.#alertMsg);
   }
 }
 

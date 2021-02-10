@@ -82,8 +82,10 @@ a {
 .list-post-latest {
   display: flex;
   flex-flow: row wrap;
-  width: auto;
+  width: 100%;
   background-color: #f7f3ef;
+  margin: auto;
+  justify-content: center;
 }
 
 .list-post {
@@ -116,8 +118,8 @@ a {
 
 .list-post-latest .list-post {
   text-align: justify;
-  margin-left: 60px;
   margin-top: 20px;
+  margin: 20px 30px 20px 30px;
   color: black;
   border-radius: 15px;
   background-color: white;
@@ -140,29 +142,6 @@ a {
 .list-post:hover {
   transform: scale(1.05);
   transition: 0.3s;
-}
-
-.list-post-latest-sub1 {
-  background-color: #f7f3ef;
-}
-.list-post-latest-sub2 {
-  background-color: #f0ebe7;
-}
-.prev-next {
-  display: flex;
-  text-align: center;
-}
-.prev {
-  display: flex;
-  margin: 3% 1% 3% 40%;
-}
-.next {
-  display: flex;
-  color: black;
-  margin: 3% 30% 3% 15%;
-}
-.arrow {
-  color: black;
 }
 
 /*-----------------Footer-------------------------*/
@@ -222,12 +201,6 @@ footer.footer .newsletter .form-element span {
   cursor: pointer;
 }
 
-footer.footer .instagram div > img {
-  display: inline-block;
-  width: 25%;
-  height: 50%;
-  margin: 0.3rem 0.4rem;
-}
 .next {
   color: white;
 }
@@ -247,7 +220,7 @@ footer.footer .rights {
   color: white;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: left;
   width: 75%;
   margin-top: 5%;
 }
@@ -267,16 +240,6 @@ footer.footer .rights {
 /*              Viewport less then or equal to 1130px            */
 
 @media only screen and (max-width: 1130px) {
-  .site-content .post-content > .post-image .post-info {
-    left: 2rem !important;
-    bottom: 1.2rem !important;
-    border-radius: 0% !important;
-  }
-
-  .site-content .sidebar .popular-post .post-info {
-    display: none !important;
-  }
-
   footer.footer .container {
     grid-template-columns: repeat(2, 1fr);
   }

@@ -5,7 +5,7 @@ import LatestPosts from "./View/latestPostView.js";
 import AllPosts from "./View/allPostsView.js";
 import FullPost from "./View/fullPostView.js";
 
-const controlPosts = async function () {
+const controlLoadingPosts = async function () {
   try {
     LatestPosts.renderSpinner();
     await model.loadPostsData();
@@ -17,14 +17,33 @@ const controlPosts = async function () {
   }
 };
 
-const controlAllPosts = async function (postId) {
+const controlAllPosts = async function () {
   try {
-    AllPosts.renderMarkup(model.state.posts, model.state.users, postId);
+    model.createPagination();
+    AllPosts.renderMarkup(
+      model.state.perPagePosts,
+      model.state.users,
+      model.state.currPage
+    );
   } catch (err) {
+    // AllPosts.displayAlert();
     console.log(err);
   }
 };
 
+const controlPagination = function (currPage, postId) {
+  model.state.currPage = currPage;
+  const lastPage = Math.ceil(
+    model.state.posts.length / model.state.postsPerPage
+  );
+  model.createPagination();
+  AllPosts.renderMarkup(
+    model.state.perPagePosts,
+    model.state.users,
+    model.state.currPage,
+    lastPage
+  );
+};
 const controlFullPost = async function (postId) {
   try {
     FullPost.renderMarkup(
@@ -34,13 +53,14 @@ const controlFullPost = async function (postId) {
       postId
     );
   } catch (err) {
-    console.log(err);
+    FullPost.displayAlert();
   }
 };
 
 export const init = function () {
-  controlPosts();
+  controlLoadingPosts();
   LatestPosts.allPostsClickHandler(controlAllPosts);
   LatestPosts.displayFullPost(controlFullPost);
   AllPosts.displayFullPost(controlFullPost);
+  AllPosts.paginationFlowHandler(controlPagination);
 };

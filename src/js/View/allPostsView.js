@@ -4,23 +4,25 @@ import * as back from "../../css/blogpost.jpg";
 class AllPosts {
   #parentEl = document.querySelector(".all_posts_section");
   #postContainer = document.querySelector(".all_posts_list");
+  #alertMsg = "Something went wrong, please reload the page! ";
 
-  renderMarkup(posts, users) {
+  renderMarkup(posts, users, currPage, lastPage) {
     this.#postContainer.innerHTML = "";
     this.#changeView();
     this.#postContainer.insertAdjacentHTML(
       "afterbegin",
       this.#generteMarkup.call(this, posts, users)
     );
+    this.renderPaginationBtns(currPage, lastPage);
   }
 
   #changeView() {
-    document.getElementById("home").classList.toggle("hidden");
-    document.getElementById("allPosts").classList.toggle("hidden");
+    document.getElementById("home").classList.add("hidden");
+    document.getElementById("allPosts").classList.remove("hidden");
   }
 
   #generteMarkup(posts, users) {
-    this.#shuffle(posts);
+    // this.#shuffle(posts);
     return posts
       .map((ele, i) => {
         const currUser = users.find((user) => user.id === ele.userId);
@@ -60,6 +62,78 @@ class AllPosts {
     }
 
     return array;
+  }
+
+  renderPaginationBtns(currPage, lastPage) {
+    let paginationBtn;
+
+    if (currPage >= 1 || currPage < lastPage) {
+      if (currPage === 1) {
+        paginationBtn = `
+        <div class="pagination">
+        <button class="pag_btn prev_page btn_nodisplay" data-pagenumber=${
+          currPage - 1
+        }>
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Page ${currPage - 1}
+        </button>
+        <button class="pag_btn next_page" data-pagenumber=${currPage + 1}>
+        Page ${currPage + 1}
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+        </button>
+        </div>
+        `;
+      }
+
+      if (currPage > 1 && currPage < lastPage) {
+        paginationBtn = `
+        <div class="pagination">
+        <button class="pag_btn prev_page" data-pagenumber=${currPage - 1}>
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Page ${currPage - 1}
+        </button>
+        <button class="pag_btn next_page" data-pagenumber=${currPage + 1}>
+        Page ${currPage + 1}
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+        </button>
+        </div>
+        `;
+      }
+
+      if (currPage === lastPage) {
+        paginationBtn = `
+        <div class="pagination">
+        <button class="pag_btn prev_page" data-pagenumber=${currPage - 1}>
+          <ion-icon name="arrow-back-outline"></ion-icon>
+          Page ${currPage - 1}
+        </button>
+        <button class="pag_btn next_page btn_nodisplay" data-pagenumber=${
+          currPage + 1
+        }>
+          Page ${currPage + 1}
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </button>
+        </div>
+        `;
+      }
+
+      this.#postContainer.insertAdjacentHTML("beforeend", paginationBtn);
+      this.#postContainer.insertAdjacentHTML("afterbegin", paginationBtn);
+    } else return;
+  }
+
+  paginationFlowHandler(handler) {
+    this.#postContainer.addEventListener("click", function (e) {
+      const btn = e.target.closest(".pag_btn");
+      if (!btn) return;
+
+      handler(+btn.dataset.pagenumber);
+      document.querySelector(".nav").scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  displayAlert() {
+    alert(this.#alertMsg);
   }
 
   displayFullPost(handler) {
