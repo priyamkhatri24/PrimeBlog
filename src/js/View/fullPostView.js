@@ -25,12 +25,12 @@ class FullPost {
     const currUser = users.find((ele) => ele.id === currentPost.userId);
     // console.log(currUser);
     return `
-    <section>
-    <div class="add-to-fav">
-        <a href="#" class="add-to-fav-text"><p>Add to Favourite</p>
-        <ion-icon name="heart-outline" class="heart-icon"></ion-icon></a>
-    </div>
-</section>   
+    <div class="display__add_to_fav">
+      <div class="add-to-fav">
+          <button href="#" class="add-to-fav-text"><p>Add to Favourite</p>
+          <ion-icon name="heart-outline" class="heart-icon"></ion-icon></button>
+      </div>
+    </div>   
 
 
 <section>
@@ -81,6 +81,8 @@ class FullPost {
       })
       .join("");
   }
+
+  favouritePostsHandler() {}
 
   displayAlert() {
     alert(this.#alertMsg);

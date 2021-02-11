@@ -12,6 +12,7 @@ const controlLoadingPosts = async function () {
     await model.loadUsersData();
     await model.loadCommentsData();
     LatestPosts.renderMarkup(model.state.posts, model.state.users);
+    model.state.favourites.forEach((ele) => (ele.isFavourite = true));
   } catch (err) {
     LatestPosts.renderError();
   }
@@ -44,6 +45,7 @@ const controlPagination = function (currPage, postId) {
     lastPage
   );
 };
+
 const controlFullPost = async function (postId) {
   try {
     FullPost.renderMarkup(

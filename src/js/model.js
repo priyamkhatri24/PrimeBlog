@@ -10,6 +10,7 @@ export const state = {
   postsPerPage: 16,
   currPage: 1,
   perPagePosts: [],
+  favourites: [],
 };
 
 export const loadPostsData = async function () {

@@ -20,6 +20,9 @@ h3 {
   list-style: none;
   display: flex;
 }
+#logo {
+  color: #fff;
+}
 
 .nav-link {
   display: flex;
@@ -31,13 +34,13 @@ h3 {
 }
 
 .nav-link:hover {
-  background-color: #141414;
+  background-color: white;
   transition: 0.5s;
 }
 
 .nav-menu {
   display: flex;
-  background-color: #fff;
+  background-color: #141414;
 }
 
 a {
@@ -54,15 +57,11 @@ a {
 .nav .nav-items a {
   display: flex;
   align-items: baseline;
-  color: black;
+  color: white;
 }
 
 .nav .nav-items .nav-link:hover a {
-  color: white;
-  transition: 0.1s;
-}
-.nav .nav-brand a {
-  color: black;
+  color: #141414;
 }
 
 .nav-brand {
@@ -71,8 +70,12 @@ a {
   padding: 1rem 1rem;
   font-size: 1.1rem;
   position: relative;
-  font-family: "Dancing Script", cursive;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
   font-size: 2rem;
+  font-weight: 400;
+}
+.nav-brand span {
+  font-weight: 300;
 }
 
 .center-text {
@@ -103,7 +106,7 @@ main .site-title .site-background {
   padding: 10px;
   margin: 15px auto;
   font-size: 1rem;
-  width: 10%;
+  width: 100px;
   border-radius: 2rem;
   border: 1px solid black;
   outline: none;
@@ -154,8 +157,7 @@ main .site-title .explorebtn:hover {
 
 .latest-posts .list-post-latest .list-post {
   text-align: justify;
-  margin-left: 50px;
-  margin-top: 20px;
+  margin: 20px 25px auto 25px;
   color: black;
   border-radius: 15px;
   background-color: #ffffff;
@@ -255,7 +257,6 @@ main .site-title .explorebtn:hover {
 /********************************Footer Section *************************************/
 
 footer.footer {
-  max-height: 40vh;
   background: #191919;
   position: relative;
 }
@@ -358,13 +359,22 @@ footer.footer .rights {
     width: 40%;
   }
 }
-
-@media only screen and (max-width: 600px) {
-  .latest-posts .list-post-latest .list-post {
-    height: 230px;
-    width: 200px;
+@media only screen and (max-width: 565px) {
+  .heading-latest-post h2 {
+    text-align: center;
+    margin: 0px;
+  }
+  .see-all-latest-posts {
+    text-align: center;
+  }
+  .heading-popular-post {
+    text-align: center;
+  }
+  .see-all-latest-posts a {
+    margin: 10px auto 20px auto;
   }
 }
+
 @media only screen and (max-width: 575px) {
   .container-main {
     flex-flow: row wrap;
@@ -375,76 +385,33 @@ footer.footer .rights {
   .popular-posts {
     width: 100%;
   }
-  .latest-posts .list-post-latest .list-post {
-    height: 250px;
-    width: 250px;
-  }
   .center-text a {
     font-size: 13px;
     padding: 12px;
   }
 }
 @media only screen and (max-width: 415px) {
-  .latest-posts .list-post-latest .list-post {
-    height: 220px;
-    width: 200px;
-  }
   .nav-link a {
     font-size: 90%;
   }
 }
-@media only screen and (max-width: 415px) {
-  .explorebtn {
-    width: 60px;
-  }
-}
-
-@media only screen and (max-width: 1130px) {
-  .site-content .post-content > .post-image .post-info {
-    left: 2rem !important;
-    bottom: 1.2rem !important;
-    border-radius: 0% !important;
-  }
-
-  .site-content .sidebar .popular-post .post-info {
-    display: none !important;
-  }
-
-  footer.footer .container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/*      x       Viewport less then or equal to 1130px    x     */
-
-/*              Viewport less then or equal to 750px            */
 
 @media only screen and (max-width: 750px) {
   .nav .nav-menu,
   .nav .nav-items {
     flex-direction: column;
   }
-
-  .nav .toggle-collapse {
-    display: initial;
+  .nav-brand {
+    margin: auto;
   }
-
-  main .site-content {
-    grid-template-columns: 100%;
-  }
-
-  footer.footer .container {
-    grid-template-columns: repeat(1, 1fr);
+  .nav-itemsul {
+    margin: auto;
   }
 }
 
 #copyrighttext {
   color: white;
 }
-
-/*        x      Viewport less then or equal to 750px       x     */
-
-/*              Viewport less then or equal to 520px            */
 
 @media only screen and (max-width: 520px) {
   main .blog {
