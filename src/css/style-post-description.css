@@ -156,8 +156,8 @@ p {
   font-size: 30px;
 }
 
-@media screen and (max-width: 750px) {
+/* @media screen and (max-width: 750px) {
   .display__add_to_fav {
     justify-content: center;
   }
-}
+} */
