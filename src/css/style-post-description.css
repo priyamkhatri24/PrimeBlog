@@ -48,7 +48,7 @@ p {
   cursor: pointer;
 }
 .add-to-fav {
-  width: 182px;
+  width: 190px;
   display: flex;
   border: solid 2px black;
   border-radius: 50px;
@@ -80,8 +80,6 @@ p {
 .heart-icon {
   color: black;
   font-size: 20px;
-}
-.fav_active {
 }
 .post-content {
   display: flex;
