@@ -21,11 +21,31 @@ p {
 .display__add_to_fav {
   display: flex;
   width: 90%;
-  justify-content: end;
+  justify-content: space-between;
   height: 80px;
   align-items: center;
   margin: auto;
   flex-direction: row-reverse;
+}
+.btn__go_to_home {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 50px;
+  outline: none;
+  border: transparent;
+  width: 70px;
+  padding: 10px;
+  color: white;
+  margin-bottom: -80px;
+}
+.home_btn {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+  cursor: pointer;
 }
 .add-to-fav {
   width: 182px;
@@ -61,7 +81,8 @@ p {
   color: black;
   font-size: 20px;
 }
-
+.fav_active {
+}
 .post-content {
   display: flex;
   flex-direction: column;

@@ -75,3 +75,20 @@ html {
   transform: scale(1.05);
   transition: 0.3s;
 }
+/* .to_display img {
+  position: relative;
+  z-index: 1;
+}
+.to_display ion-icon {
+  position: absolute;
+  z-index: 10;
+  padding: 5px;
+  color: red;
+  font-size: 25px;
+}
+.post_display_hearticon {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  background-color: blue;
+} */

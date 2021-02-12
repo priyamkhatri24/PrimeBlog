@@ -10,6 +10,7 @@ export const state = {
   postsPerPage: 16,
   currPage: 1,
   perPagePosts: [],
+  currPost: {},
   favourites: [],
 };
 
@@ -45,4 +46,38 @@ export const createPagination = function (page = state.currPage) {
   const start = (page - 1) * state.postsPerPage;
   const end = page * state.postsPerPage;
   state.perPagePosts = state.posts.slice(start, end);
+};
+
+export const addFavPost = function (currPost) {
+  state.favourites.push(currPost);
+
+  currPost.isFavourite = true;
+};
+
+export const removeFavPost = function (currPost) {
+  const index = state.favourites.findIndex((ele) => ele.id === currPost.id);
+  state.favourites.splice(index, 1);
+  currPost.isFavourite = false;
+};
+
+export const saveDataToLocalStorage = function (favourites) {
+  localStorage.setItem("favourites", JSON.stringify(favourites));
+
+  persistFavouritePosts();
+};
+
+export const getDataFromLocalStorage = function () {
+  const data = JSON.parse(localStorage.getItem("favourites"));
+
+  if (data) state.favourites = data;
+
+  persistFavouritePosts();
+};
+
+const persistFavouritePosts = function () {
+  state.posts.forEach((ele) => {
+    state.favourites.forEach((fav) => {
+      if (fav.id === ele.id) ele.isFavourite = true;
+    });
+  });
 };

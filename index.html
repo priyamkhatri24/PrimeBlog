@@ -45,7 +45,7 @@
               <li class="nav-link">
                 <a class="link_nav-link" href="#">About</a>
               </li>
-              <li class="nav-link">
+              <li class="nav-link favourites">
                 <a class="link_nav-link" href="#">Favourites</a>
               </li>
               <li class="nav-link">
@@ -56,9 +56,16 @@
         </div>
       </nav>
     </div>
-
+    <div class="fav_dropdown display_non_active">
+      <div class="favourite_post_display">
+        <h4>You dont't have any favourite posts right now. 😊</h4>
+        <!-- <p>- Author Name</p> -->
+      </div>
+    </div>
     <section id="home">
       <main>
+        <!---------------------------------Favourites------------------------------------>
+
         <!------------------------ Site Title ---------------------->
 
         <section class="site-title">
@@ -143,41 +150,51 @@
 
     <!---------------------------- full post section -------------------------------->
 
-    <section class="full_post_section" id="fullPost" class="hidden">
-      <!-- <section class="display__add_to_fav">
-            <div class="add-to-fav">
+    <section class="full_post_section hidden" id="fullPost">
+      <div class="home_btn">
+        <button class="btn__go_to_home">
+          <ion-icon name="arrow-back-outline"></ion-icon> Home
+        </button>
+      </div>
+
+      <section class="display__add_to_fav">
+        <!-- <div class="add-to-fav">
                 <a href="#" class="add-to-fav-text"><p>Add to Favourite</p>
                 <ion-icon name="heart-outline" class="heart-icon"></ion-icon></a>
-            </div>
-        </section>   
+            </div> -->
+      </section>
 
+      <section class="full_post_view_section">
+        <!--<div class="post-content">
+          <div class="title">
+            <h2>Title of the Post</h2>
+            <p class="date">September 5, 2020</p>
+          </div>
+          <div class="author">
+            <h3 class="author-name">Priyam Khatri</h3>
+          </div>
+          <div class="content">
+            <p>
+              adipisci iusto totam placeat corrupti ipsumLorem ipsum dolor sit
+              amet consectetur adipisicing elit. Neque voluptas deserunt beatae
+              adipisci iusto totam placeat corrupti ipsum
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <section>
-            <div class="post-content">
-                <div class="title">
-                    <h2>Title of the Post</h2>
-                    <p class="date">September 5, 2020</p>
-                </div>
-                <div class="author">
-                    <h3 class="author-name">Priyam Khatri</h3>
-                </div>
-                <div class="content">
-                    <p> adipisci iusto totam placeat corrupti ipsumLorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptas deserunt beatae adipisci iusto totam placeat corrupti ipsum</p>
-                </div>
-            </div> 
-        </section>
-
-
-        <section class="comment-sec">
-             <div class="comment-section">
-                <h2 class="comment-heading">5 Comments</h2>
-                <div class="comment">
-                    <h4>Name</h4>
-                    <p class="mail">name@gmail.com</p>
-                    <p class="comment-text">adipisci iusto totam placeat corrupti ipsumLorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptas deserunt beatae adipisci iusto totam placeat corruptiadipisci iusto totam placeat corrupti ipsumLorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptas deserunt beatae adipisci iusto totam placeat corrupti</p>
-                </div>
-            </div> 
-        </section>    -->
+      <section class="comment-sec">
+        <div class="comment-section">
+          <h2 class="comment-heading">5 Comments</h2>
+          <div class="comment">
+            <h4>Name</h4>
+            <p class="mail">name@gmail.com</p>
+            <p class="comment-text">
+              abcd
+            </p>
+          </div>
+        </div>-->
+      </section>
     </section>
 
     <!---------------------------- Footer section -------------------------------->

@@ -3,6 +3,7 @@ const exploreBtn = document.querySelector(".explorebtn");
 const latestPostSection = document.querySelector(".latest__post__section");
 const nav = document.querySelector(".nav-items");
 const footer = document.querySelector(".footer");
+const dropdown = document.querySelector(".fav_dropdown");
 
 exploreBtn.addEventListener("click", function () {
   latestPostSection.scrollIntoView({ behavior: "smooth" });
@@ -18,6 +19,8 @@ nav.addEventListener("click", function (e) {
 
   if (content === "About" || content === "Contact Us")
     footer.scrollIntoView({ behavior: "smooth" });
+
+  if (content === "Favourites") dropdown.classList.toggle("display_non_active");
 });
 
 init();
