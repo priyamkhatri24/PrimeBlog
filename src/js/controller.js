@@ -17,8 +17,8 @@ const controlLoadingPosts = async function () {
     Favourites.renderFavourites();
     LatestPosts.renderMarkup(model.state.posts, model.state.users);
   } catch (err) {
-    // LatestPosts.renderError();
-    console.log(err);
+    LatestPosts.renderError();
+    // console.log(err);
   }
 };
 

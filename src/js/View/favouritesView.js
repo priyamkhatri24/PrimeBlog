@@ -24,17 +24,18 @@ class Favourites {
         <h4>You dont't have any favourite posts right now. 😊</h4>
         <!-- <p>- Author Name</p> -->
       </div>`;
-    }
-    return favourites
-      .map((ele) => {
-        return `
+    } else {
+      return favourites
+        .map((ele) => {
+          return `
         <div class="favourite_post_display" data-postid=${ele.id}>
             <h3>${ele.title}</h3>
             <p>${ele.body.split(" ").slice(0, 5).join(" ")}...</p>
          </div>
           `;
-      })
-      .join("");
+        })
+        .join("");
+    }
   }
 
   displayFullPost(handler) {
@@ -45,6 +46,7 @@ class Favourites {
       if (postCard.dataset.postid) {
         handler(postCard.dataset.postid);
         document.querySelector(".nav").scrollIntoView({ behavior: "auto" });
+        this.classList.toggle("display_non_active");
       }
     });
   }
