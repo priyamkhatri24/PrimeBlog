@@ -1,6 +1,8 @@
 # BloggerProject
 
-This project is made using jsonplaceholder API. I have made this project Using MVC (model-View-Controller) architecture. 
+Project is live at: <a href="https://primeblog.netlify.app">primeblog.netlify.app</a>
+
+A dummy Blog Website. This project is made using jsonplaceholder API. I have made this project Using MVC (model-View-Controller) architecture. 
 
 To use the project:
 1. First run the command in your command line: <b>npm install</b> --> This will install the node_modules folder required or the project.
